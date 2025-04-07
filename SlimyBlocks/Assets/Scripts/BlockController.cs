@@ -4,11 +4,17 @@ using UnityEngine.InputSystem;
 
 public class BlockController : MonoBehaviour
 {
+    public Color blockColor;
+
     public float moveSpeed = 5f;
     public float rotateSpeed = 90f;
 
     private PlayerInputActions inputActions;
     private float moveInput;
+    private void Start()
+    {
+        blockColor = GetComponent<Renderer>().material.color;
+    }
 
     private void Awake()
     {

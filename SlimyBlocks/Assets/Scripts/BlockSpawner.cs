@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BlockSpawner : MonoBehaviour
@@ -14,13 +12,41 @@ public class BlockSpawner : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= spwanInternal)
         {
-            SpawnLock();
+            SpawnBlock();
             timer = 0f;
         }
     }
 
-    private void SpawnLock()
+
+    private void SpawnBlock()
     {
-        Instantiate(blockPrefab, transform.position, Quaternion.identity);
+        GameObject newBlock = Instantiate(blockPrefab, transform.position, Quaternion.identity);
+
+        Renderer renderer = newBlock.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.material = new Material(renderer.material);
+
+            Color randomColor = GetRandomColor();
+            renderer.material.color = randomColor;
+
+            Debug.Log("Spawn color:" + randomColor);
+        }
+    }
+
+    private Color GetRandomColor()
+    {
+        // List of available colors
+        Color[] colors =
+        {
+            Color.red,
+            Color.green,
+            Color.blue,
+            Color.yellow,
+            Color.magenta,
+            Color.cyan
+        };
+
+        return colors[Random.Range(0, colors.Length)];
     }
 }
