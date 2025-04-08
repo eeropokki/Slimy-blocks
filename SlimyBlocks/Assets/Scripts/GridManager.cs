@@ -34,7 +34,7 @@ public class GridManager : MonoBehaviour
 
     public Vector3 GridToWorld(Vector2Int gridPos)
     {
-        return new Vector3(gridPos.x, gridPos.y, 0);
+        return new Vector3(gridPos.x * cellSize, gridPos.y * cellSize, 0f);
     }
 
     public void SetBlockAt(Vector2Int pos, Block block)
@@ -59,5 +59,20 @@ public class GridManager : MonoBehaviour
     public bool IsInsideGrid(Vector2Int pos)
     {
         return pos.x >= 0 && pos.x < width && pos.y >= 0 && pos.y < height;
+    }
+
+    public bool IsGridFull()
+    {
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                if (grid[x, y] == null)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

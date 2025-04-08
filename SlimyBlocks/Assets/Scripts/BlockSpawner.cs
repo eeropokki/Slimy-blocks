@@ -2,51 +2,28 @@ using UnityEngine;
 
 public class BlockSpawner : MonoBehaviour
 {
-    public GameObject blockPrefab;
-    public float spwanInternal = 2;
+    public GameObject blockPrefab;  // Palikkaprefabi
+    public float spawnInterval = 1f;  // Millä välein palikka spawnataan (sekunteina)
 
-    private float timer;
-
-    void Update()
+    private void Start()
     {
-        timer += Time.deltaTime;
-        if (timer >= spwanInternal)
-        {
-            SpawnBlock();
-            timer = 0f;
-        }
+        // Aloita palikoiden spawnaaminen tietyllä aikavälillä
+        InvokeRepeating("SpawnBlock", 0f, spawnInterval);
     }
-
 
     private void SpawnBlock()
     {
-        GameObject newBlock = Instantiate(blockPrefab, transform.position, Quaternion.identity);
+        // Satunnainen X-koordinaatti ja Y-koordinaatti
+        float spawnX = Random.Range(-4f, 4f);  // Satunnainen X-koordinaatti
+        float spawnY = 6f;  // Spawnaa yläpuolelta (saat muuttaa tarpeen mukaan)
 
-        Renderer renderer = newBlock.GetComponent<Renderer>();
-        if (renderer != null)
-        {
-            renderer.material = new Material(renderer.material);
+        // Luo uusi palikka
+        Vector3 spawnPosition = new Vector3(spawnX, spawnY, 0);
 
-            Color randomColor = GetRandomColor();
-            renderer.material.color = randomColor;
+        // Debug-viesti spawnauspaikasta
+        Debug.Log("Spawning block at position: " + spawnPosition);
 
-            Debug.Log("Spawn color:" + randomColor);
-        }
-    }
-
-    private Color GetRandomColor()
-    {
-        // List of available colors
-        Color[] colors =
-        {
-            Color.red,
-            Color.green,
-            Color.blue,
-            Color.yellow,
-            Color.magenta,
-            Color.cyan
-        };
-
-        return colors[Random.Range(0, colors.Length)];
+        // Spawnaa palikka
+        Instantiate(blockPrefab, spawnPosition, Quaternion.identity);
     }
 }

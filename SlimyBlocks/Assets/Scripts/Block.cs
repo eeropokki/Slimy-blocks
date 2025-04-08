@@ -1,10 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Block : MonoBehaviour
 {
     public Color color;
+
+    public Color GetColor()
+    {
+        return GetComponent<Renderer>().material.color;
+    }
 
     private void Start()
     {
