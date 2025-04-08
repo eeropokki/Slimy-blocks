@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 5147362353366782329}
   - component: {fileID: 566880371913561837}
   - component: {fileID: 6992514310057811318}
+  - component: {fileID: 6737853744866061807}
   - component: {fileID: 8084373799154083508}
   - component: {fileID: 8987444889305930558}
-  - component: {fileID: 6737853744866061807}
+  - component: {fileID: 5417785443751229969}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -108,33 +109,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8084373799154083508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3634273608977698009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4df76c7231142a428a463c5afd54d0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  rotateSpeed: 50
---- !u!114 &8987444889305930558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3634273608977698009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b867a1cb3039734ca2f292fa3235f0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fallSpeed: 2
 --- !u!54 &6737853744866061807
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -162,3 +136,44 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8084373799154083508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3634273608977698009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4df76c7231142a428a463c5afd54d0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockColor: {r: 0, g: 0, b: 0, a: 0}
+  moveSpeed: 5
+  rotateSpeed: 50
+--- !u!114 &8987444889305930558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3634273608977698009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b867a1cb3039734ca2f292fa3235f0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallSpeed: 2
+--- !u!114 &5417785443751229969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3634273608977698009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 247838cdcd327df4c91c0de22d7e1f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0, g: 0, b: 0, a: 0}
