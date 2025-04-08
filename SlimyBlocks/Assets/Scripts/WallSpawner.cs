@@ -4,23 +4,43 @@ using UnityEngine;
 
 public class WallSpawner : MonoBehaviour
 {
-    public GameObject wallPrefab; // Seinän prefab
-    public float gridWidth = 10;  // Pelialueen leveys
-    public float gridHeight = 10; // Pelialueen korkeus
+    public GameObject wallPrefab;  // Seinän prefab
+    public float wallHeight = 10f; // Seinä on yhtä korkea kuin pelialue
+    public float wallWidth = 10f;  // Seinä on yhtä leveä kuin pelialue
+    public float wallLength = 10f;
+    public float floorWidth = 10f; // Lattian leveys
+    public float floorLength = 10f; // Lattian pituus
+
 
     void Start()
     {
-        CreateWalls();
+        SpawnWallsAndFloor();
     }
 
-    void CreateWalls()
+    void SpawnWallsAndFloor()
     {
-        // Luo ylä- ja alaseinät
-        Instantiate(wallPrefab, new Vector3(0, gridHeight / 2, 0), Quaternion.identity); // Yläseinä
-        Instantiate(wallPrefab, new Vector3(0, -gridHeight / 2, 0), Quaternion.identity); // Alaseinä
+        // Takaseinä
+        CreateWall(new Vector3(0, wallHeight / 2, -wallLength / 2), new Vector3(wallWidth, 1, 1));
 
-        // Luo vasen ja oikea seinä
-        Instantiate(wallPrefab, new Vector3(-gridWidth / 2, 0, 0), Quaternion.identity); // Vasemmalla
-        Instantiate(wallPrefab, new Vector3(gridWidth / 2, 0, 0), Quaternion.identity);  // Oikealla
+        // Vasemmanpuoleinen seinä
+        CreateWall(new Vector3(-wallWidth / 2, wallHeight / 2, 0), new Vector3(1, wallHeight, wallLength));
+
+        // Oikeanpuoleinen seinä
+        CreateWall(new Vector3(wallWidth / 2, wallHeight / 2, 0), new Vector3(1, wallHeight, wallLength));
+
+        // Alaseinä (lattia)
+        CreateFloor(new Vector3(0, -wallHeight / 2, 0), new Vector3(wallWidth, 1, wallLength));
+    }
+
+    void CreateWall(Vector3 position, Vector3 scale)
+    {
+        GameObject wall = Instantiate(wallPrefab, position, Quaternion.identity); // Luodaan seinä
+        wall.transform.localScale = scale;  // Asetetaan seinän koko
+    }
+
+    void CreateFloor(Vector3 position, Vector3 scale)
+    {
+        GameObject floor = Instantiate(wallPrefab, position, Quaternion.identity); // Luodaan lattia
+        floor.transform.localScale = scale;  // Asetetaan lattian koko
     }
 }
